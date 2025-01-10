@@ -4,56 +4,96 @@
     <title>Daftar Mata Kuliah</title>
     <link href="../css/style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/heroicons@2/dist/heroicons.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
     <div class="content">
-      <div id="header-container"></div>
-      <script>
-        fetch('../components/header.html')
-          .then(response => response.text())
-          .then(data => {
-            document.getElementById('header-container').innerHTML = data;
-          });
-      </script>
+        <div id="header-container"></div>
+        <script>
+            fetch('../components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                });
+        </script>
 
         <main class="container mx-auto px-4 py-12">
             <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">Daftar Mata Kuliah</h1>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <a href="./daftar_matkul_semester1.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                    <h2 class="text-xl font-semibold text-gray-800 text-center">Semester 1</h2>
+
+                <a href="./daftar_matkul_semester1.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 flex flex-col items-center">
+                    <span class="text-4xl text-blue-500 mb-2">
+                        <i data-feather="1"></i>
+                    </span>
+                    <h2 class="text-xl font-semibold text-gray-800 text-center mb-2">Semester 1</h2>
+                    <p class="text-gray-600 text-center">Pengenalan dasar-dasar ilmu komputer.</p>
                 </a>
-                <a href="./daftar_matkul_semester2.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                    <h2 class="text-xl font-semibold text-gray-800 text-center">Semester 2</h2>
+
+                <a href="./daftar_matkul_semester2.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 flex flex-col items-center">
+                    <span class="text-4xl text-green-500 mb-2">
+                        <i data-feather="2"></i>
+                    </span>
+                    <h2 class="text-xl font-semibold text-gray-800 text-center mb-2">Semester 2</h2>
+                    <p class="text-gray-600 text-center">Pendalaman struktur data dan pemrograman.</p>
                 </a>
-                <a href="./daftar_matkul_semester3.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                    <h2 class="text-xl font-semibold text-gray-800 text-center">Semester 3</h2>
+
+                <a href="./daftar_matkul_semester3.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 flex flex-col items-center">
+                    <span class="text-4xl text-yellow-500 mb-2">
+                        <i data-feather="3"></i>
+                    </span>
+                    <h2 class="text-xl font-semibold text-gray-800 text-center mb-2">Semester 3</h2>
+                    <p class="text-gray-600 text-center">Mempelajari sistem dan jaringan komputer.</p>
                 </a>
-                <a href="./daftar_matkul_semester4.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                    <h2 class="text-xl font-semibold text-gray-800 text-center">Semester 4</h2>
+
+                <a href="./daftar_matkul_semester4.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 flex flex-col items-center">
+                    <span class="text-4xl text-red-500 mb-2">
+                        <i data-feather="4"></i>
+                    </span>
+                    <h2 class="text-xl font-semibold text-gray-800 text-center mb-2">Semester 4</h2>
+                    <p class="text-gray-600 text-center">Fokus pada pengembangan perangkat lunak.</p>
                 </a>
-                <a href="./daftar_matkul_semester5.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                  <h2 class="text-xl font-semibold text-gray-800 text-center">Semester 5</h2>
+                <a href="./daftar_matkul_semester5.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 flex flex-col items-center">
+                    <span class="text-4xl text-purple-500 mb-2">
+                        <i data-feather="5"></i>
+                    </span>
+                    <h2 class="text-xl font-semibold text-gray-800 text-center mb-2">Semester 5</h2>
+                    <p class="text-gray-600 text-center">Mempelajari bidang AI dan grafika komputer.</p>
                 </a>
-                <a href="./daftar_matkul_semester6.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                  <h2 class="text-xl font-semibold text-gray-800 text-center">Semester 6</h2>
+                <a href="./daftar_matkul_semester6.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 flex flex-col items-center">
+                  <span class="text-4xl text-indigo-500 mb-2">
+                      <i data-feather="6"></i>
+                  </span>
+                    <h2 class="text-xl font-semibold text-gray-800 text-center mb-2">Semester 6</h2>
+                    <p class="text-gray-600 text-center">Manajemen dan keamanan sistem informasi.</p>
                 </a>
-                <a href="./daftar_matkul_semester7.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                  <h2 class="text-xl font-semibold text-gray-800 text-center">Semester 7</h2>
+                <a href="./daftar_matkul_semester7.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 flex flex-col items-center">
+                  <span class="text-4xl text-pink-500 mb-2">
+                      <i data-feather="7"></i>
+                  </span>
+                    <h2 class="text-xl font-semibold text-gray-800 text-center mb-2">Semester 7</h2>
+                    <p class="text-gray-600 text-center">Melaksanakan kerja praktik di industri.</p>
                 </a>
-                <a href="./daftar_matkul_semester8.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
-                  <h2 class="text-xl font-semibold text-gray-800 text-center">Semester 8</h2>
+                <a href="./daftar_matkul_semester8.html" class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 flex flex-col items-center">
+                  <span class="text-4xl text-gray-500 mb-2">
+                      <i data-feather="8"></i>
+                  </span>
+                    <h2 class="text-xl font-semibold text-gray-800 text-center mb-2">Semester 8</h2>
+                    <p class="text-gray-600 text-center">Penyelesaian studi dengan tugas akhir.</p>
                 </a>
             </div>
         </main>
+
+        <div id="footer-container"></div>
+        <script>
+            fetch('../components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+            feather.replace()
+        </script>
+        <script src="https://unpkg.com/feather-icons"></script>
     </div>
-    <div id="footer-container"></div>
-    <script>
-      fetch('../components/footer.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('footer-container').innerHTML = data;
-        });
-    </script>
 </body>
 </html>
