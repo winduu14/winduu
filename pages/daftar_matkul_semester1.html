@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Mata Kuliah Semester 1</title>
+    <link href="../css/style.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="content">
+        <div id="header-container"></div>
+        <script>
+            fetch('../components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                });
+        </script>
+
+        <main class="container mx-auto px-4 py-12">
+            <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">Detail Mata Kuliah Semester 1</h1>
+
+            <input type="text" id="searchInput" placeholder="Cari mata kuliah..." class="w-full px-4 py-2 border rounded-md mb-4 focus:outline-none focus:ring focus:ring-blue-300">
+
+            <div id="daftarMatkulContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 matkul-item" data-title="Bahasa Indonesia">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Bahasa Indonesia</h2>
+                    <p class="text-gray-600 mb-4">Mata kuliah ini memberikan pengantar tentang prinsip-prinsip dasar desain komunikasi visual.</p>
+                    <a href="#" onclick="aksesMateri('LINK_GDRIVE_PENGANTAR_DKV'); return false;" class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 cursor-pointer">Lihat Materi</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 matkul-item" data-title="Kreatifitas dan Inovasi">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Kreatifitas dan Inovasi</h2>
+                    <p class="text-gray-600 mb-4">Mata kuliah ini memberikan pengantar tentang prinsip-prinsip dasar desain komunikasi visual.</p>
+                    <a href="#" onclick="aksesMateri('LINK_GDRIVE_PENGANTAR_DKV'); return false;" class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-red-600 hover:bg-red-700 cursor-pointer">Lihat Materi</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 matkul-item" data-title="Menggambar Dasar">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Menggambar Dasar</h2>
+                    <p class="text-gray-600 mb-4">Mata kuliah ini mempelajari tentang penggunaan dan pemilihan jenis huruf dalam desain.</p>
+                    <a href="#" onclick="aksesMateri('LINK_GDRIVE_DASAR_TIPOGRAFI'); return false;" class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700 cursor-pointer">Lihat Materi</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 matkul-item" data-title="Pengantar Desain Komunikasi Visual">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Pengantar Desain Komunikasi Visual</h2>
+                    <p class="text-gray-600 mb-4">Mata kuliah ini memberikan pengantar tentang prinsip-prinsip dasar desain komunikasi visual.</p>
+                    <a href="#" onclick="aksesMateri('LINK_GDRIVE_PENGANTAR_DKV'); return false;" class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 cursor-pointer">Lihat Materi</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 matkul-item" data-title="Manajemen Proyek TI">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-2">Manajemen Proyek TI</h2>
+                    <p class="text-gray-600 mb-4">Mempelajari manajemen proyek di bidang TI.</p>
+                    <a href="#" onclick="aksesMateri('LINK_GDRIVE_MANAJEMEN_PROYEK_TI'); return false;" class="w-full inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700 cursor-pointer">Lihat Materi</a>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer-container"></div>
+        <script>
+            fetch('../components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        </script>
+    </div>
+
+    <script>
+        // KODE FITUR PENCARIAN & SWEETALERT DILETAKKAN DI SINI
+        function aksesMateri(link) {
+            const kodeAksesBenar = "kodeRahasia";
+
+            Swal.fire({
+                title: 'Masukkan Kode Akses',
+                input: 'password',
+                inputAttributes: {
+                    autocapitalize: 'off'
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Verifikasi',
+                cancelButtonText: 'Batal',
+                showLoaderOnConfirm: true,
+                preConfirm: (kodeAkses) => {
+                    if (kodeAkses === kodeAksesBenar) {
+                        return true;
+                    } else {
+                        Swal.showValidationMessage('Kode Akses Salah');
+                        return false;
+                    }
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.open(link, '_blank');
+                }
+            });
+        }
+
+        const searchInput = document.getElementById('searchInput');
+        const daftarMatkulContainer = document.getElementById('daftarMatkulContainer');
+        const matkulItems = daftarMatkulContainer.querySelectorAll('.matkul-item');
+
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+
+            matkulItems.forEach(item => {
+                const title = item.dataset.title.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

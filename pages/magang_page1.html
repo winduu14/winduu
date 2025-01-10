@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magang</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-gray-100">
+    <div class="content">
+        <div id="header-container"></div>
+        <script>
+            fetch('../components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                });
+        </script>
+
+        <main class="container mx-auto px-4 py-12">
+            <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">Program Magang</h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <a href="./magang_page2.html" class="block bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="p-6 flex flex-col items-center justify-center h-full">
+                        <img src="../assets/images/msib.png" alt="Logo MSIB" class="max-w-full max-h-48 object-contain mb-4"> <--- Perubahan di sini
+                        <h2 class="text-xl font-semibold text-gray-800 mb-2 text-center">MSIB Batch 6 Studycle</h2>
+                        <p class="text-gray-600 text-center">Program magang yang dirancang untuk memberikan pengalaman praktis di dunia industri kepada mahasiswa melalui proyek-proyek nyata dan bimbingan dari mentor profesional.</p>
+                    </div>
+                </a>
+
+                <a href="./magang_shinergy.html" class="block bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <div class="p-6 flex flex-col items-center justify-center h-full">
+                        <img src="../assets/images/shinergy.png" alt="Logo Shinergy" class="max-w-full max-h-48 object-contain mb-4"> <--- Perubahan di sini
+                        <h2 class="text-xl font-semibold text-gray-800 mb-2 text-center">Magang Shinergy</h2>
+                        <p class="text-gray-600 text-center">Program magang kolaborasi dengan Shinergy yang berfokus pada pengembangan solusi inovatif di bidang energi terbarukan dan teknologi ramah lingkungan.</p>
+                    </div>
+                </a>
+
+            </div>
+        </main>
+
+        <div id="footer-container"></div>
+        <script>
+            fetch('../components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        </script>
+    </div>
+</body>
+</html>

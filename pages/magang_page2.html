@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Magang</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-gray-100">
+    <div class="content">
+        <div id="header-container"></div>
+        <script>
+            fetch('../components/header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('header-container').innerHTML = data;
+                });
+        </script>
+
+        <main class="container mx-auto px-4 py-12">
+            <h1 class="text-3xl font-bold text-gray-800 mb-4 text-center">Judul Magang (Contoh: MSIB Batch 6 Studycle)</h1> <--- Judul Magang
+
+            <div class="mb-8"> <--- Wadah untuk Spreadsheet
+                <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRnWa8dHSgj19hE1v4nBBHV1cL7TniVx29iqlSU-_dZ02AEyn-RXcmh70uG-Kd48AQ2SAof1hgqz-PV/pubhtml" width="100%" height="600" frameborder="0"></iframe> <--- Embed Spreadsheet
+            </div>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Tautan Terkait</h2> <--- Judul Tautan Terkait
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6"> <--- Grid untuk Tautan
+
+                <a href="LINK_TAUTAN_1" target="_blank" class="block bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 p-6 flex items-center justify-center text-center"> <--- Grid Menu 1
+                    <span class="text-xl font-semibold text-gray-800">Tautan 1 (Contoh: Website MSIB)</span>
+                </a>
+
+                <a href="LINK_TAUTAN_2" target="_blank" class="block bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 p-6 flex items-center justify-center text-center"> <--- Grid Menu 2
+                    <span class="text-xl font-semibold text-gray-800">Tautan 2 (Contoh: Panduan Magang)</span>
+                </a>
+
+            </div>
+        </main>
+
+        <div id="footer-container"></div>
+        <script>
+            fetch('../components/footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        </script>
+    </div>
+</body>
+</html>
