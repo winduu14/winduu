@@ -3,82 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Showcase Karya - Dalam Pengembangan</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>Dalam Pengembangan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .loading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 80vh;
-        }
-        .loader { /* Style dasar loader */
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            border: 8px solid #f3f3f3;
-            border-top: 8px solid #3498db;
-        }
-        .loader.rotate {
-          animation: rotate 1.5s linear infinite;
-        }
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        /* Style untuk loading bar */
+        /* Animasi loading bar */
         .loading-bar {
-            width: 200px;
-            height: 10px;
-            background-color: #eee;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-        .progress {
             width: 0%;
-            height: 100%;
-            background-color: #3498db;
-            animation: progress 2s linear infinite;
+            height: 5px;
+            background-color: #3490dc; /* Warna biru, bisa diganti */
+            animation: loading 2s linear infinite; /* Durasi dan jenis animasi */
         }
 
-        @keyframes progress {
+        @keyframes loading {
             0% { width: 0%; }
-            100% { width: 100%; }
+            50% { width: 100%; }
+            100% { width: 0%; }
         }
     </style>
 </head>
-<body class="bg-gray-100">
-    <div class="content">
-      <div id="header-container"></div>
-      <script>
-        fetch('../components/header.html')
-          .then(response => response.text())
-          .then(data => {
-            document.getElementById('header-container').innerHTML = data;
-          });
-      </script>
-        <main class="container mx-auto px-4 py-12">
-            <div class="loading">
-                <div class="loader rotate"></div> <--- Pilih salah satu loading di sini
-                <h1 class="text-2xl font-semibold text-gray-800">Fitur ini sedang dalam pengembangan</h1>
-                <p class="text-gray-600">Mohon maaf atas ketidaknyamanannya. Fitur ini akan segera hadir.</p>
-                <div class="loading-bar">
-                    <div class="progress"></div>
-                </div>
-            </div>
-        </main>
-        <div id="footer-container"></div>
-        <script>
-          fetch('../components/footer.html')
-            .then(response => response.text())
-            .then(data => {
-              document.getElementById('footer-container').innerHTML = data;
-            });
-        </script>
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded-lg shadow-md text-center">
+        <div class="loading-bar"></div> <br>
+        <h1 class="text-2xl font-bold text-gray-800 mb-4">Fitur Showcase Karya Lagi Ku kembangin BRO! Maklum Developer Indie</h1>
+        <p class="text-gray-600 mb-6">Kami sedang bekerja keras untuk menghadirkan fitur-fitur baru. Mohon maaf atas ketidaknyamanannya.</p>
+        <div class="flex justify-center space-x-4">
+          <a href="/" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Balik Yuk</a>
+          </div>
     </div>
+
 </body>
 </html>
