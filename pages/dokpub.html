@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumentasi Dan Publikasi Pribadi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Style untuk modal/popup */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .alert {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+        }
+
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4 text-center">Dokumentasi Publikasi Pribadi</h1>
+        <h2 class="text-lg text-gray-600 mb-8 text-center">Dokumentasi Dan Publikasi Pribadi - Jurnal, Artikel, Laporan Akhir, Per BAB Karya Akhir DKV</h2>
+
+        <div class="mb-4">
+            <label for="search" class="block text-gray-700 font-bold mb-2">Cari Dokumentasi Publikasi:</label>
+            <input type="text" id="search" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Ketik judul Dokomentasi Publikasi...">
+        </div>
+
+        <table class="w-full border-collapse bg-white shadow-md">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="py-2 px-4 border">Kode</th>
+                    <th class="py-2 px-4 border">Judul</th>
+                    <th class="py-2 px-4 border">Mata Kuliah</th>
+                    <th class="py-2 px-4 border">Link/Tautan</th>
+                </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-message"></p>
+            <input type="password" id="access-code" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring focus:ring-blue-300" placeholder="Masukkan Kode Akses">
+            <div id="alert-container"></div>
+            <button id="modal-button" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Verifikasi</button>
+        </div>
+    </div>
+
+    <script>
+        const courses = [
+            { kode: "IF123", judul: "Proposal Seminar DKV BAB I", sks: 4, lin3k: "https://www.google.com/search?q=struktur+data" },
+            { kode: "KI456", judul: "Proposal Seminar DKV BAB II", sks: 4, link: "https://www.google.com/search?q=kimia+organik" },
+            { kode: "MT789", judul: "Proposal Seminar DKV FULL BAB I BAB II", sks: 3, link: "https://www.google.com/search?q=matematika+diskrit" },
+            { kode: "MT789", judul: "Laporan Praktek Kerja Profesi PKP", sks: 4, link: "https://www.google.com/search?q=matematika+diskrit" },
+            // ... tambahkan data mata kuliah lainnya
+        ];
+
+        const kodeAksesGlobal = "Dokpub"; // Ganti dengan kode akses Anda
+
+        const modal = document.getElementById("myModal");
+        const modalMessage = document.getElementById("modal-message");
+        const modalButton = document.getElementById("modal-button");
+        const accessCodeInput = document.getElementById("access-code");
+        const span = document.getElementsByClassName("close")[0];
+        const alertContainer = document.getElementById("alert-container");
+
+        let currentLink = "";
+
+        function displayCourses(data) {
+            const tableBody = document.getElementById('table-body');
+            tableBody.innerHTML = '';
+
+            if (!data || data.length === 0) {
+                const row = tableBody.insertRow();
+                const cell = row.insertCell();
+                cell.colSpan = 4;
+                cell.textContent = "Tidak ada data ditemukan.";
+                cell.classList.add('py-2', 'px-4', 'border', 'text-center', 'italic', 'text-gray-500');
+                return;
+            }
+
+            data.forEach(course => {
+                const row = tableBody.insertRow();
+                const kodeCell = row.insertCell();
+                const judulCell = row.insertCell();
+                const sksCell = row.insertCell();
+                const linkCell = row.insertCell();
+
+                kodeCell.textContent = course.kode;
+                judulCell.textContent = course.judul;
+                sksCell.textContent = course.sks;
+
+                const linkButton = document.createElement('button');
+                linkButton.className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded";
+                linkButton.textContent = "Lihat";
+                linkCell.appendChild(linkButton);
+                linkCell.classList.add('py-2', 'px-4', 'border', 'text-center');
+                kodeCell.classList.add('py-2', 'px-4', 'border');
+                judulCell.classList.add('py-2', 'px-4', 'border');
+                sksCell.classList.add('py-2', 'px-4', 'border');
+
+                linkButton.addEventListener('click', function() {
+                    modal.style.display = "block";
+                    modalMessage.textContent = "Masukkan Kode Akses untuk melihat " + course.judul;
+                    currentLink = course.link;
+                    accessCodeInput.value = "";
+                    alertContainer.innerHTML = "";
+                    modalButton.onclick = function() {
+                        if (accessCodeInput.value === kodeAksesGlobal) {
+                            window.open(currentLink, '_blank');
+                            modal.style.display = "none";
+                            alertContainer.innerHTML = '<div class="alert alert-success" role="alert">Berhasil!</div>';
+                            setTimeout(() => {
+                                alertContainer.innerHTML = "";
+                            }, 3000); // Pesan hilang setelah 3 detik
+                        } else {
+                            alertContainer.innerHTML = '<div class="alert alert-danger" role="alert">Kode Akses Salah!</div>';
+                        }
+                    };
+                });
+            });
+        }
+
+        displayCourses(courses);
+
+        const searchInput = document.getElementById('search');
+        searchInput.addEventListener('keyup', function(event) {
+            const searchTerm = event.target.value.toLowerCase();
+            const filteredCourses = courses.filter(course =>
+                course.judul.toLowerCase().includes(searchTerm)
+            );
+            displayCourses(filteredCourses);
+        });
+
+        span.onclick = function() {
+            modal.style.display = "none";
+            accessCodeInput.value = "";
+            alertContainer.innerHTML = "";
+        };
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+                accessCodeInput.value = "";
+                alertContainer.innerHTML = "";
+            }
+        };
+    </script>
+
+</body>
+</html>
